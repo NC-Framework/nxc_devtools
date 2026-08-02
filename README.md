@@ -15,7 +15,7 @@ Development diagnostics for Nexus Core. Gated by development mode and capability
 ## Dependencies
 
 - `nxc_lib`
-- `nexus_core`
+- `nxc_core`
 
 ## Installation
 

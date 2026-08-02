@@ -19,5 +19,5 @@ server_scripts {
 
 dependencies {
     'nxc_lib',
-    'nexus_core',
+    'nxc_core',
 }
