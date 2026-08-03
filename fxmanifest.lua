@@ -26,10 +26,48 @@ author 'The Nexus Core Framework team'
 description 'Development diagnostics for Nexus Core. Gated by development mode and capability.'
 version '0.1.0'
 
--- No script blocks are declared yet: this resource has no code, and a manifest
--- that declares files which do not exist is a lie the server may tolerate and a
--- reviewer will not notice. Blocks are added as each directory gains files.
+shared_scripts {
+    '@nxc_lib/shared/namespace.lua',
+    '@nxc_lib/shared/result.lua',
+    '@nxc_lib/shared/errors.lua',
+    '@nxc_lib/shared/correlation.lua',
+    '@nxc_lib/shared/time.lua',
+    '@nxc_lib/shared/serialize.lua',
+    '@nxc_lib/shared/validate.lua',
+    '@nxc_lib/shared/envelope.lua',
+    '@nxc_lib/shared/ratelimit.lua',
+    '@nxc_lib/shared/cancel.lua',
+    '@nxc_lib/shared/logger.lua',
+    '@nxc_lib/shared/locale.lua',
+    '@nxc_lib/shared/permissions.lua',
+    '@nxc_lib/shared/health.lua',
+    '@nxc_lib/shared/persistence.lua',
+    '@nxc_lib/shared/migrations.lua',
+    '@nxc_lib/shared/config_schema.lua',
 
+    'shared/namespace.lua',
+    'shared/gating.lua',
+    'shared/demos.lua',
+}
+
+client_scripts {
+    'client/runtime.lua',
+}
+
+server_scripts {
+    'server/service.lua',
+}
+
+-- nxc_zones, nxc_target, nxc_interact and nxc_ui are NOT declared, deliberately.
+--
+-- This resource demonstrates them, so a hard dependency looks right. It is not:
+-- a missing one would stop nxc_devtools starting at all, and an operator whose
+-- nxc_target failed to start would lose the diagnostics that would have told
+-- them so.
+--
+-- Instead it waits for each, warns by name when one never arrives, and registers
+-- what it can. ADR-0018 wants the same thing for a different reason: a server may
+-- substitute its own interaction system, and a hard dependency would forbid that.
 dependencies {
     'nxc_lib',
     'nxc_core',
