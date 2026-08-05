@@ -195,5 +195,16 @@ RegisterCommand('nxc_devtools', function(source, args)
     line('  run "nxc_devtools demos" for what to try')
 end, true)
 
+Nxc.Service.start({
+    dependencies = { 'nxc_lib', 'nxc_core' },
+    contractVersion = NxcDevtools.CONTRACT_VERSION,
+    capabilities = { 'diagnostics' },
+    ready = true,
+})
+
+--- This resource's own health, for nxc_core's aggregate and for anyone asking
+--- directly. Plain, because a report behind a metatable arrives empty.
+exports('health', function() return Nxc.plain(Nxc.Health.report()) end)
+
 NxcDevtools.Service = Service
 return Service

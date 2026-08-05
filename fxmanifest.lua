@@ -24,7 +24,7 @@ nxc_legacy_compatibility 'none'
 
 author 'The Nexus Core Framework team'
 description 'Development diagnostics for Nexus Core. Gated by development mode and capability.'
-version '0.1.0'
+version '0.2.0'
 
 shared_scripts {
     '@nxc_lib/shared/namespace.lua',
@@ -44,6 +44,7 @@ shared_scripts {
     '@nxc_lib/shared/persistence.lua',
     '@nxc_lib/shared/migrations.lua',
     '@nxc_lib/shared/config_schema.lua',
+    '@nxc_lib/shared/service_client.lua',
 
     'shared/namespace.lua',
     'shared/gating.lua',

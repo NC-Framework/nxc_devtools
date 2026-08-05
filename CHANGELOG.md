@@ -4,6 +4,15 @@ Entries are added only for genuinely user-visible or contract-relevant changes.
 
 ## Unreleased
 
+## 0.2.0 — 2026-08-05
+
+### Added
+
+- Registers itself as a service with nxc_core, and exports `health`. A
+  diagnostics resource missing from the diagnostics is a gap exactly where
+  somebody is looking.
+
+
 Initial implementation.
 
 ### Added
